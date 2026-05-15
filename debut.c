@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define int NBLIG
-#
-const int NBLIG = 6;
-const int NBCOL = 8;
+#define NBLIG 6
+#define NBCOL 8
+
 typedef struct {
   int ligne;
   int colonne;
