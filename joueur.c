@@ -13,7 +13,7 @@ int constructJoueur (defJoueur joueur[3]){
       }
    } while (n!=2 && n!=3 && n!=99);
   if (n==99) {
-    return(n);
+    return n;
    }
   for(int i=0; i<n; i++) {
     joueur[i].numJoueur = i+1;
@@ -24,11 +24,11 @@ int constructJoueur (defJoueur joueur[3]){
     j=0;
     while (carlu !='\n') {
       scanf("%c", &carlu);
-      if (j < 10) {
+      if (j < 10) {                                    // Le pseudo est au max de 10 caractères
         joueur[i].nomJoueur[j] = carlu;
         j++;
       }
     }
    }
-  return(n);
+  return n;
  }
