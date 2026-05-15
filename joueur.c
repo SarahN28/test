@@ -4,7 +4,8 @@ int constructJoueur (defJoueur joueur[3]){
   int j;
   char carlu;
   do{
-     printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir tapez 99 :\n");
+     printf("Nombre de joueurs:\n");
+     printf("2 : 2joueurs       3 : 3joueurs       sinon pour sortir tapez 99 :\n");
      scanf("%d", &n);
      getchar();
      if (n!=2 && n!=3 && n!=99) {
