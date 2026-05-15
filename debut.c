@@ -23,8 +23,8 @@ typedef struct {
       tab[i][j] = 0;
     }
   }
-  tab[0][0]=4;                //carré sur L1 C1
-  tab[0][nbc-1]=4;                //carré sur L1 C8
-  tab[nbl-1][0]=4;                //carré sur L6 C1
-  tab[nbl-1][nbc-1]=4;                //carré sur L6 C8
+  tab[0][0]=1;                //carré sur L1 C1
+  tab[0][nbc-1]=1;                //carré sur L1 C8
+  tab[nbl-1][0]=1;                //carré sur L6 C1
+  tab[nbl-1][nbc-1]=1;                //carré sur L6 C8
 }
