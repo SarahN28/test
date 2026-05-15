@@ -16,7 +16,7 @@ int constructJoueur (defJoueur joueur[3]){
   }
   for(int i=0; i<n; i++) {
    joueur[i].numJoueur = i+1;
-   joueur[i].pieceJoueur = i+2;
+   joueur[i].pieceJoueur = i+1;
    joueur[i].aGagner = 0;
    printf("Entrez le nom du joueur %d et tapez sur la touche Entrée \n", i+1);
    carlu = ' ';
