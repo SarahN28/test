@@ -140,46 +140,60 @@ int deplacement_bas(int (*tab)[NBCOL], int nbJ, int numcol){
   return(i-1);
  }
 
- // selection de la colonne pivot
-
-pivot choixPivot(int p, int lig, int col) {
+ // selection du pivot : le carré doit contenir le dernier jeton mis, et doit appartenir à la grille
+ // la ligne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille
+ // la colonne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille 
+pivot choixPivot(int n, int lig, int col) {
   int i=0, j=0;
+  int ligmin, ligmax, colmin, colmax;
   pivot c;
+  
   printf("Votre nouveau jeton est en l%d, c%d \n", lig+1, col+1);
-  if (p==3){
-    while (i<2 || (i>7 && i!=99)){
-      printf("Choisir la colonne du pivot : comprise entre 2 et 7 ou 99 pour sortir du jeu\n");
-      scanf("%d", &i);
-      getchar();
-     }
-    if (i!=99) {
-      while (j<2 || j>5) {
-        printf("Choisir la ligne du pivot : comprise entre 2 et 5 \n");
-        scanf("%d", &j);
-        getchar();
-      }
-    }
-   }
-  if (p==5){
-    while (i<3 || (i>6 && i !=99)) {
-      printf("Choisir la colonne du pivot : comprise entre 3 et 6 ou 99 pour sortir du jeu \n");
-      scanf("%d", &i);
-      getchar();
-     }
-    if (i!=99) {
-     while (j<3 || j>4) {
-      printf("Choisir la ligne du pivot : comprise entre 3 et 4 \n");
+  printf("la largeur du carré pivotant est de %d cases \n", (n*2)+1);
+  
+  // le pion doit être dans le carré (les valeurs sont celles affichées soit a +1 de l'indice du tableau)
+  ligmin = lig-n +1;
+  ligmax = lig+n +1;
+  colmin = col-n +1;
+  colmax = col+n + 1;
+  
+  // carré doit être dans grille
+  if ((ligmin-n) < 1) {
+    ligmin = 1;
+  }
+  if ((ligmax + n) > 6 ) {
+    ligmax = 6 - n;
+  }
+  
+   if ((colmin-n) < 1) {
+    colmin = 1;
+  }
+  if ((colmax + n) > 8 ) {
+    colmax = 8-n;
+  }
+   
+
+    while (j<colmin || (j>colmax && j!=99)){
+      printf("Choisir la colonne du pivot : comprise entre %d et %d ou 99 pour sortir du jeu\n", colmin, colmax);
       scanf("%d", &j);
       getchar();
+     }
+     
+    if (j!=99) {
+      while (i<ligmin || i>ligmax) {
+        printf("Choisir la ligne du pivot : comprise entre %d et %d \n", ligmin, ligmax);
+        scanf("%d", &i);
+        getchar();
       }
-    }
-   }
-   if (i!=99) {
      i--;
      j--;
-   }
-  c.ligne = j;
-  c.colonne = i;
+    }
+    else {
+     i = 99;
+    }
+   
+  c.ligne = i;
+  c.colonne = j;
   return c;
  }
  
@@ -381,7 +395,7 @@ if (ret==1) {
  int numerojoueur = 0;
  int numerocol = 0;
  int grille[NBLIG][NBCOL];
- int finpartie = 0;
+ int finpartie = 1;
  int nvlig;
  int nbpivot;
  int nbcase;
@@ -391,17 +405,14 @@ if (ret==1) {
  
  nbjoueur = constructJoueur(jo);
  if (nbjoueur == 99) {return 0; }
-
- nbpivot = selectionpivot();
- nbcase = nbpivot/2;
  createPiste(grille, NBLIG, NBCOL);
 
 numerojoueur = 0; 
 // a faire tant que partie non terminée
 while(finpartie == 1) {
 
-  printf("Au tour du joueur %s \n", jo[numerojoueur].nomJoueur);
   printGame(grille, NBLIG, NBCOL);
+  printf("Au tour du joueur %s \n", jo[numerojoueur].nomJoueur);
   nvlig = -1;
   
   //insertion du jeton du nv joueur
@@ -418,10 +429,15 @@ while(finpartie == 1) {
   // fin insertion du jeton : le nouveau pion sera en nvlig, numerocol
   printGame(grille, NBLIG, NBCOL);
   
+  // calcul largeur carré à pivoter
+  nbpivot = selectionpivot();
+  nbcase = nbpivot/2;
+ 
+ // sélection du pivot
   ok = 1;
   while(ok==1) {
   // demande position du pivot
-  piv = choixPivot(nbpivot, nvlig, numerocol);
+  piv = choixPivot(nbcase, nvlig, numerocol);
   if (piv.ligne==99) {
       finpartie = 2;
       return 0;
@@ -475,3 +491,4 @@ if (finpartie == 2) {
 
 return 0;
 }
+
