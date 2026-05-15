@@ -401,6 +401,7 @@ int main () {
  int ok;
  pivot piv;
  defJoueur jo[3];
+ srand(time(NULL));
  
  nbjoueur = constructJoueur(jo);
  if (nbjoueur == 99) {return 0; }
