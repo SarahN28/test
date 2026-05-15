@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int main () {
+#define int NBLIG
+#
 const int NBLIG = 6;
 const int NBCOL = 8;
 typedef struct {
