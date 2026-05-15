@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int main () {
+
 const int NBLIG = 6;
 const int NBCOL = 8;
 typedef struct {
@@ -389,7 +389,7 @@ if (ret==1) {
  return(ret);
 }
  
-
+int main () {
  // programme principal
  int nbjoueur;
  int numerojoueur = 0;
