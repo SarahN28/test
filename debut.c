@@ -12,7 +12,6 @@ typedef struct {
 typedef struct {
   int numJoueur;
   char nomJoueur[11];
-  char pieceJoueur;
   int aGagner;
 } defJoueur;
 
