@@ -45,7 +45,7 @@ void printGame(int tab[][NBCOL], int nbl, int nbc){
     printf("| \n");
     printf("  ");
     for (k = 0; k<nbc; k++) {
-    printf("-----");
+    printf("------");
     }  
     printf("-\n");
    }
