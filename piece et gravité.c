@@ -16,7 +16,7 @@
     return (n-1);
    }
   else {
-   return n;
+   return n;                     //number of the column
   } 
  }
  
