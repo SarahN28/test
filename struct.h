@@ -6,6 +6,13 @@ typedef struct {
 typedef struct {
   int numJoueur;
   char nomJoueur[11];
-  char pieceJoueur;
   int aGagner;
 } defJoueur;
+
+// les données du jeu : sont mises dans une structure pour pourvoir sauvegarder dans un fichier binaire, et les récupérer facilement
+typedef struct {
+  int nbJoueur;
+  int numeroJoueur;
+  defJoueur jo[3];
+  int grille[6][8];
+} jeu;
