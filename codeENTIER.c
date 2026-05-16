@@ -361,8 +361,7 @@ for(j=pi.colonne-nbc; j<=pi.colonne+nbc;j++){
 // fin fct
 
 // Fin de jeu  ? ret = 1 : non terminée, ret=0 : joueur(s) gagnant(s), ret=2 : Partie Nulle
-// Fin de jeu  ? ret = 1 : non terminée, ret=0 : joueur(s) gagnant(s), ret=2 : Partie Nulle
-int finJeu(int (*tab)[NBCOL], defJoueur resJ[3]) {
+int finJeu(int tab[NBLIG][NBCOL], defJoueur resJ[3]) {
 int i, j, k;
 int ret = 1;
 
