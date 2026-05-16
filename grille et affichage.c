@@ -19,7 +19,7 @@
 }
 
 // affichage de la grille de jeu
-void printGame(int tab[][NBCOL], int nbl, int nbc){
+void printGame(int tab[NBLIG][NBCOL], int nbl, int nbc){
   int k;
   printf("-\n");
   printf("    1  2  3  4  5  6  7  8\n");
