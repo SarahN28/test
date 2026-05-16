@@ -4,7 +4,7 @@ int constructJoueur (defJoueur joueur[3]){
   int j;
   char carlu;
   do{
-     printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir tapez 99 :\n");
+     printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir : tapez 99 \n");
      scanf("%d", &n);
      carlu = getchar();
      while (carlu !='\n') {
@@ -14,22 +14,26 @@ int constructJoueur (defJoueur joueur[3]){
        printf("Erreur :  le nombre de joueur est incorrect\n");}
   } while (n!=2 && n!=3 && n!=99);
   if (n==99) {
-   return n;
+   return(n);
   }
   for(int i=0; i<n; i++) {
    joueur[i].numJoueur = i+1;
-   joueur[i].pieceJoueur = i+2;
    joueur[i].aGagner = 0;
    printf("Entrez le nom du joueur %d et tapez sur la touche Entrée \n", i+1);
    carlu = ' ';
    j=0;
    while (carlu !='\n') {
      scanf("%c", &carlu);
-     if (j < 10) {
+     if (j < 10 && carlu != '\n') {
        joueur[i].nomJoueur[j] = carlu;
        j++;
      }
    }
+   while (j<10) {
+     joueur[i].nomJoueur[j] = ' ';
+     j++;
+   }
+   joueur[i].nomJoueur[10] = '\0';
   }
-  return n;
+  return(n);
  }
