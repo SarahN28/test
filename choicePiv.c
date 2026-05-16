@@ -8,7 +8,7 @@ pivot choixPivot(int n, int lig, int col) {              //lig = (i+1) of previo
   char carlu;
   
   printf("Votre nouveau jeton est en l%d, c%d \n", lig+1, col+1);           //position of last piece put
-  n = n/2 ;                                                                 //size of piv divided by two  
+    
   // calcul des limites
   ligmin = lig-n;
   ligmax = lig+n;
