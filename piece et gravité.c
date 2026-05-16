@@ -13,8 +13,10 @@
        printf("Erreur :  le numéro de colonne est incorrecte\n");}
   } while (n<1 || (n>8 && n!=99));
   if (n!=99) {
-    return(n-1);}
-  else {return(n);
+    return (n-1);
+   }
+  else {
+   return n;
   } 
  }
  
