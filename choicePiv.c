@@ -1,7 +1,7 @@
  // selection du pivot : le carré doit contenir le dernier jeton mis, et doit appartenir à la grille
  // la ligne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille
  // la colonne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille 
-pivot choixPivot(int n, int lig, int col) {              //lig = (i+1) of previous fonction   &    col = 
+pivot choixPivot(int n, int lig, int col) {              //lig = (i+1) of previous function   &    col = n from previous (*2) function
   int i=0, j=0;
   int ligmin, ligmax, colmin, colmax;
   pivot c;
