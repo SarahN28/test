@@ -4,16 +4,6 @@
 #define NBLIG 6
 #define NBCOL 8
 
-typedef struct {
-  int ligne;
-  int colonne;
-} pivot;
-
-typedef struct {
-  int numJoueur;
-  char nomJoueur[11];
-  int aGagner;
-} defJoueur;
 
 // initialisation de la grille de jeu
  void createPiste(int tab[][NBCOL], int nbl, int nbc){
