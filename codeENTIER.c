@@ -334,7 +334,7 @@ void rotationAntiHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
 
 void gravitePivot(int tab[NBLIG][NBCOL], pivot pi, int nbc) {
 int t[NBCOL];
-int k=5;
+int k;
 int i, j ;
 for(j=pi.colonne-nbc; j<=pi.colonne+nbc;j++){
   for(k=0; k<=5; k++) {
