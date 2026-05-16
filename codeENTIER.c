@@ -517,7 +517,6 @@ while(finpartie == 1) {
   }
   // fin insertion du jeton : le nouveau pion sera en nvlig, numerocol
   printGame(nvJeu, NBLIG, NBCOL);
-  
  
  
  // sélection du pivot
@@ -536,7 +535,6 @@ while(finpartie == 1) {
      printf("votre pion n'est pas dans la zone de rotation : %d case(s) autour du pivot. Veuillez re-saisir le pivot \n", nbcase);
      }
   }
-
  
   // demande du type de rotation
   if (demanderRotation() ==1 ) {
@@ -553,13 +551,13 @@ while(finpartie == 1) {
    
    printGame(nvJeu, NBLIG, NBCOL);
   
- // si finpartie = 2 => Terminée pas de gagnant, si = 0 : gagnant
+  // si finpartie = 2 => Terminée pas de gagnant, si = 0 : gagnant
   finpartie = finJeu(nvJeu.grille, nvJeu.jo);
-
   
   // calcul du nouveau joueur qui doit jouer
   if (nvJeu.numeroJoueur >= nvJeu.nbJoueur-1) {
-    nvJeu.numeroJoueur = 0;}
+    nvJeu.numeroJoueur = 0;
+  }
   else {
     nvJeu.numeroJoueur =  nvJeu.numeroJoueur+1;
   }
@@ -577,7 +575,6 @@ if (finpartie == 2) {
     }
   }
  }
-
 
 return 0;
 }
