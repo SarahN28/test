@@ -1,15 +1,14 @@
  // selection du pivot : le carré doit contenir le dernier jeton mis, et doit appartenir à la grille
  // la ligne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille
  // la colonne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille 
-pivot choixPivot(int n, int lig, int col) {
+pivot choixPivot(int n, int lig, int col) {              //lig = (i+1) of previous fonction   &    col = 
   int i=0, j=0;
   int ligmin, ligmax, colmin, colmax;
   pivot c;
   char carlu;
   
   printf("Votre nouveau jeton est en l%d, c%d \n", lig+1, col+1);
-  
-  
+    
   // le carré de rotation doit contenir le pion (en lig, col)
   ligmin = lig-n;
   ligmax = lig+n;
