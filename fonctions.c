@@ -43,7 +43,7 @@ int constructJoueur (defJoueur joueur[3]){
 
 
 // initialisation de la grille de jeu
- void createPiste(int tab[][NBCOL], int nbl, int nbc){
+ void createPiste(int tab[NBLIG][NBCOL], int nbl, int nbc){
   for (int i=0; i<nbl; i++){
     for(int j=0; j<nbc; j++) {
       tab[i][j] = 0;
@@ -56,7 +56,7 @@ int constructJoueur (defJoueur joueur[3]){
 }
 
 // affichage de la grille de jeu
-void printGame(int tab[][NBCOL], int nbl, int nbc){
+void printGame(int tab[NBLIG][NBCOL], int nbl, int nbc){
   int k;
   printf("-\n");
   printf("    1  2  3  4  5  6  7  8\n");
