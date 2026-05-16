@@ -30,7 +30,7 @@ int deplacement_bas(int tab[][NBCOL], int nbJ, int numcol){
   // i contient la première ligne non vide (arrêt car !=0)
   if (i==0) {
     return (-1);
-   } // la colonne est pleine : insertion du jeton impossible
-  tab[i-1][numcol] = nbJ;
-  return (i-1);
+   }            // la colonne est pleine : insertion du jeton impossible
+  tab[i-1][numcol] = nbJ;                            //insert piece in the right spot
+  return (i-1);                                      //return the spot of the piece for the next fonction
  }
