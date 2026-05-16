@@ -466,7 +466,6 @@ int sauvJeux(jeu sjeu, FILE *fic){
   }
 }
 
-retF =0;
 // initialisation jeu avec sauvegarde
 if (reprise=='o' || reprise == 'O') {
   retF = fread(&nvJeu, sizeof(jeu), 1, f);
@@ -475,10 +474,11 @@ if (reprise=='o' || reprise == 'O') {
   }
 }
 // initialisation du jeu si non récupérer du fichier de sauvegarde
-if (retF != 1)
-{
+if (retF != 1) {
   nvJeu.nbJoueur=constructJoueur(nvJeu.jo);
-  if (nvJeu.nbJoueur == 99) {return 0; }  //finpartie
+  if (nvJeu.nbJoueur == 99) {
+    return 0;
+  }                                                               //finpartie
   createPiste(nvJeu.grille, NBLIG, NBCOL);
   nvJeu.numeroJoueur = 0; 
 }
