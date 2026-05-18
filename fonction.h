@@ -176,3 +176,84 @@ pivot choixPivot(int n, int lig, int col) {               // lig = i-1 de deplac
   c.colonne = j;
   return c;
  }
+
+int demanderRotation(){
+  int choix = 0;
+  char carlu;
+  carlu = ' ';
+  while(choix!=1 && choix !=2) {
+    printf("Choisir un sens de rotation :\n");
+    printf("     1 : Horaire  |  2 : Anti-Horaire\n");
+    scanf("%d", &choix);
+    carlu = getchar();                                      // pour supprimer les caractères restants au cas où...
+    while (carlu != '\n') {
+      carlu = getchar();
+     }
+   }
+  if(choix == 1){
+    printf(" Activation de la rotation Horaire\n");
+   }
+  else {
+    printf(" Activation de la rotation Anti-Horaire\n");
+   }
+  return choix;
+ }
+
+// rotation horaire
+void rotationHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
+  int i, j, k, k2;
+  int t[5][5];                                                                                             //definir en constante
+  k2 = 0;
+  for (i=0; i<5; i++) {                                                                      // initialisation table intermédiaire
+    for (j=0; j<5; j++) {
+      t[i][j]=0;
+    }
+   }
+  for(i=(p.ligne+n); i>=(p.ligne-n); i--) {                          // remplissage table intermédiaire avec nouvelle valeur suite à rotation
+    k = 0;
+    for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+      t[k][k2]=tab[i][j];
+      k++;
+     }
+    k2++;
+   }
+  k=0; 
+  for(i=(p.ligne-n); i<=(p.ligne+n); i++) {
+    k2=0;
+    for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+      tab[i][j]=t[k][k2];
+      k2++;
+     }
+    k++;
+   }
+}
+
+void rotationAntiHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
+ int i,j,k, k2;
+ int t[5][5];
+ for (i=0; i<5; i++) {
+   for (j=0; j<5; j++) {
+     t[i][j]=0;
+   }
+  }
+ // remplissage table intermédiaire avec nouvelle valeur
+ k2 = 2*n;
+ for(i=(p.ligne+n); i>=(p.ligne-n); i--) {
+  k = 2*n;
+  for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+   t[k][k2]=tab[i][j];
+   k--;
+  }
+  k2--;
+ }
+ // nouvelles valeur à mettre dans la grille : substitution par celle de t renseignée
+ k=0; 
+ for(i=(p.ligne-n); i<=(p.ligne+n); i++) {
+  k2=0;
+  for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+   tab[i][j]=t[k][k2];
+   k2++;
+  }
+  k++;
+ }
+}
