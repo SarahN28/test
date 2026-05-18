@@ -206,22 +206,22 @@ void rotationHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
   k2 = 0;
   for (i=0; i<5; i++) {                                                                      // initialisation table intermédiaire
     for (j=0; j<5; j++) {
-      t[i][j]=0;
+      t[i][j] = 0;
     }
    }
   for(i=(p.ligne+n); i>=(p.ligne-n); i--) {                          // remplissage table intermédiaire avec nouvelle valeur suite à rotation
     k = 0;
     for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
-      t[k][k2]=tab[i][j];
+      t[k][k2] = tab[i][j];
       k++;
      }
     k2++;
    }
-  k=0; 
+  k = 0; 
   for(i=(p.ligne-n); i<=(p.ligne+n); i++) {
-    k2=0;
+    k2 = 0;
     for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
-      tab[i][j]=t[k][k2];
+      tab[i][j] = t[k][k2];
       k2++;
      }
     k++;
@@ -229,31 +229,54 @@ void rotationHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
 }
 
 void rotationAntiHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
- int i,j,k, k2;
- int t[5][5];
- for (i=0; i<5; i++) {
-   for (j=0; j<5; j++) {
-     t[i][j]=0;
+  int i,j,k, k2;
+  int t[5][5];
+  for (i=0; i<5; i++) {
+    for (j=0; j<5; j++) {
+      t[i][j] = 0;
+     }
    }
-  }
- // remplissage table intermédiaire avec nouvelle valeur
- k2 = 2*n;
- for(i=(p.ligne+n); i>=(p.ligne-n); i--) {
-  k = 2*n;
-  for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
-   t[k][k2]=tab[i][j];
-   k--;
-  }
-  k2--;
- }
- // nouvelles valeur à mettre dans la grille : substitution par celle de t renseignée
- k=0; 
- for(i=(p.ligne-n); i<=(p.ligne+n); i++) {
-  k2=0;
-  for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
-   tab[i][j]=t[k][k2];
-   k2++;
-  }
-  k++;
- }
+  k2 = 2*n;                                                         // remplissage table intermédiaire avec nouvelle valeur
+  for(i=(p.ligne+n); i>=(p.ligne-n); i--) {
+    k = 2*n;
+    for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+      t[k][k2] = tab[i][j];
+      k--;
+     }
+    k2--;
+   }
+  k = 0;                                            // nouvelles valeur à mettre dans la grille : substitution par celle de t renseignée
+  for(i=(p.ligne-n); i<=(p.ligne+n); i++) {
+    k2 = 0;
+    for(j=(p.colonne-n); j<=(p.colonne+n); j++) {
+      tab[i][j] = t[k][k2];
+      k2++;
+     }
+    k++;
+   }
+}
+
+void gravitePivot(int tab[NBLIG][NBCOL], pivot pi, int nbc) {
+  int t[NBCOL];
+  int k;
+  int i, j ;
+  for(j=(pi.colonne-nbc); j<=(pi.colonne+nbc); j++){
+    for(k=0; k<=5; k++) {
+      t[k] = 0;
+     }
+    k = 5;
+    for(i=5; i>=0; i--) {
+      if (tab[i][j] != 0 && tab[i][j] != 1) {
+        t[k] = tab[i][j];
+        k--;
+       }
+      else if (tab[i][j] == 1) {
+        t[i] = tab[i][j];
+        k = i-1;
+       }
+     }
+    for(i=0; i<=5; i++) {
+      tab[i][j]=t[i];
+     }
+   }
 }
