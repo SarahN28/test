@@ -452,8 +452,13 @@ int sauvJeux(jeu sjeu, FILE *fic){
  f=fopen("SauvP5.txt", "rb") ;
  if(f!= NULL) {
   while(reprise != 'o' && reprise != 'O' && reprise != 'n' && reprise != 'N') {
-    printf("Voulez vous reprendre l'ancienne partie ? O pour Oui, N pour Non \n");
-    scanf("%c", &reprise);
+    do {
+      if (reprise == '\n'){
+        printf("erreur 2 de saisie\n");
+      }
+      printf("Voulez vous reprendre l'ancienne partie ? O pour Oui, N pour Non \n");
+      scanf("%c", &reprise);
+    } while (reprise == '\n');
     carlu = getchar();
     while (carlu != '\n') {
       carlu = getchar();
