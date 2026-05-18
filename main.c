@@ -4,10 +4,10 @@
 #include <fonction.h>
 
 // programme principal
- int main () {
+int main () {
+ int nvlig, nbpivot, nbcase;
  int numerocol = 0;
  int finpartie = 1;
- int nvlig, nbpivot, nbcase;
  int retF = 0;
  char carlu;
  char reprise = ' ';
