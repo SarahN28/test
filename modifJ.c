@@ -1,18 +1,23 @@
 int constructJoueur (defJoueur joueur[3]){
   int n = 0;
-  int j;
+  int j, k;
   char carlu;
   do{
      printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir : tapez 99 \n");
      scanf("%d", &n);
+     if (n!='\n'){
      carlu = getchar();                                       //verif que l'utilisateur n'a mis qu'un nombre
      while (carlu !='\n') {
       carlu = getchar();                                      //verif que l'utilisateur n'a mis qu'un nombre
      }
+     }
+     else if (n=='\n'){
+       k = 1;
+     }
      if (n!=2 && n!=3 && n!=99) {
        printf("Erreur :  le nombre de joueur est incorrect\n");                   //verif que le nombre donne est prenable
      }
-  } while (n!=2 && n!=3 && n!=99);
+  } while (n!=2 && n!=3 && n!=99 || k==1);
   if (n==99) {
    return (n);
   }
