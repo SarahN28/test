@@ -1,2 +1,2 @@
-#define NBLIG 6;
-#define NBCOL 8;
+#define NBLIG 6
+#define NBCOL 8
