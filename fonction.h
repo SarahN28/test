@@ -280,3 +280,58 @@ void gravitePivot(int tab[NBLIG][NBCOL], pivot pi, int nbc) {
      }
    }
 }
+
+// fin = 1 : non terminée, fin = 0 : joueur(s) gagnant(s), fin = 2 : Partie Nulle
+int finJeu(int tab[NBLIG][NBCOL], defJoueur resJ[3]) {
+  int i, j, k;
+  int fin = 1;
+  for (i=0; i<NBLIG; i++) {                                                                         // verif gagnant en ligne
+    for(j=0; j<=NBCOL-5; j++) {
+      if (tab[i][j]==tab[i][j+1] && tab[i][j]==tab[i][j+2] && tab[i][j]==tab[i][j+3] && tab[i][j]==tab[i][j+4] && tab[i][j] != 0) {
+        k = tab[i][j] - 2;
+        resJ[k].aGagner = 1;
+        printf("Gagnant en ligne %d \n", i+1);
+        fin = 0;
+       }
+     }
+   }
+  for (j=0; j<NBCOL; j++) {                                                                        // vérif gagnant en colonne : NON Testée
+    for(i=0; i<=NBLIG-5; i++) {
+      if (tab[i][j]==tab[i+1][j] && tab[i][j]==tab[i+2][j] && tab[i][j]==tab[i+3][j] && tab[i][j]==tab[i+4][j]  && tab[i][j] != 0) {
+        k = tab[i][j] - 2;
+        resJ[k].aGagner = 1;
+        printf("Gagnant en colonne %d \n", j+1);
+        fin = 0;
+       }
+     }
+   }
+  for(i=4; i<6; i++) {                                                                            // verif gagnant en diagonale /
+    for(j=0; j<4; j++) {
+      if (tab[i][j]==tab[i-1][j+1] && tab[i][j]==tab[i-2][j+2] && tab[i][j]==tab[i-3][j+3] && tab[i][j]==tab[i-4][j+4] && tab[i][j]!=0){
+        k=tab[i][j] - 2;
+        resJ[k].aGagner = 1;
+        printf("Gagnant en diagnonale %d \n", i+1);
+        fin = 0;
+       }
+     }
+   }
+  for(i=4; i<6; i++) {                                                                    // verif gagnant en diagonale inversée
+    for(j=4; j<8; j++) {
+      if (tab[i][j]==tab[i-1][j-1] && tab[i][j]==tab[i-2][j-2] && tab[i][j]==tab[i-3][j-3] && tab[i][j]==tab[i-4][j-4] && tab[i][j]!=0){
+        k=tab[i][j] - 2;
+        resJ[k].aGagner = 1;
+        printf("Gagnant en diagonale inversée %d \n", i+1);
+        fin = 0;
+       }
+     }
+   }
+  if (fin==1) {                                                                         // verif si partie NULLE
+    fin = 2;
+    for(j=0; j<NBCOL; j++) {
+      if(tab[0][j] ==0) {
+        fin = 1;
+       }
+     }
+   }
+  return fin;
+}
