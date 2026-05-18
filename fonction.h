@@ -1,7 +1,7 @@
 // saisie du nombre de joueur
 int constructJoueur (defJoueur joueur[3]){
   int n = 0;
-  int j, k;
+  int j;
   char carlu;
   do{
      printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir : tapez 99 \n");
@@ -45,4 +45,50 @@ int constructJoueur (defJoueur joueur[3]){
    joueur[i].nomJoueur[10] = '\0';
   }
   return (n);
+ }
+
+ // initialisation de la grille de jeu
+ void createPiste(int tab[NBLIG][NBCOL], int nbl, int nbc){
+  for (int i=0; i<nbl; i++){
+    for(int j=0; j<nbc; j++) {
+      tab[i][j] = 0;
+    }
+  }
+  tab[0][0]=1;                //carré sur L1 C1
+  tab[0][nbc-1]=1;                //carré sur L1 C8
+  tab[nbl-1][0]=1;                //carré sur L6 C1
+  tab[nbl-1][nbc-1]=1;                //carré sur L6 C8
+}
+
+// affichage de la grille de jeu
+void printGame(jeu nvjeu, int nbl, int nbc){
+  int k;
+  printf("-\n");
+  printf("    1   2   3   4   5   6   7   8\n");
+  for (int i=0; i<nbl; i++){ 
+    printf ("%d ", i+1);
+    for (int j=0; j<nbc; j++){
+      if(nvjeu.grille[i][j]==0){
+        printf("|   ");
+       }
+      else if(nvjeu.grille[i][j]==1){
+        printf("|###");
+       }
+      else if(nvjeu.grille[i][j]==2){
+        printf("| ¤ ");
+       }
+      else if(nvjeu.grille[i][j]==3){
+        printf("| & ");
+       }
+      else if(nvjeu.grille[i][j]==4){
+        printf("| ¥ ");
+       }
+     }
+    printf("| \n");
+    printf("  ");
+    for (k = 0; k<nbc; k++) {
+    printf("----");
+    }  
+    printf("-\n");
+   }
  }
