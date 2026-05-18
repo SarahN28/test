@@ -1,4 +1,3 @@
-// saisie du nombre de joueur
 int constructJoueur (defJoueur joueur[3]){
   int n = 0;
   int j;
@@ -48,8 +47,6 @@ int constructJoueur (defJoueur joueur[3]){
   return (n);
  }
 
-
- // initialisation de la grille de jeu
  void createPiste(int tab[NBLIG][NBCOL], int nbl, int nbc){
   for (int i=0; i<nbl; i++){
     for(int j=0; j<nbc; j++) {
@@ -62,7 +59,6 @@ int constructJoueur (defJoueur joueur[3]){
   tab[nbl-1][nbc-1]=1;                //carré sur L6 C8
 }
 
-// affichage de la grille de jeu
 void printGame(jeu nvjeu, int nbl, int nbc){
   int k;
   printf("-\n");
@@ -108,12 +104,10 @@ printf("Le carré pivotant a une largeur de %d cases \n", piv);
 return piv;
 }
 
- // insert piece in column 'numcol'
- // 2 if first player, 3 if second player, etc...
-int deplacement_bas(int tab[NBLIG][NBCOL], int nbJ, int numcol){
+int deplacement_bas(int tab[NBLIG][NBCOL], int nbJ, int numcol){                          // insert piece in column 'numcol'
   int i = 0;
   while (tab[i][numcol]==0 && i<6){
-    i = i+1;
+    i = i+1;                                                                // 2 if first player, 3 if second player, etc...
    }
   if (i==0) {
     return (-1);          // insertion impossible, column full
@@ -122,14 +116,11 @@ int deplacement_bas(int tab[NBLIG][NBCOL], int nbJ, int numcol){
   return (i-1);
  }
 
- // la ligne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille
- // la colonne du pivot soit être à n case de celle du jeton, n étant le nb de case pivotant autour du pivot (nbpivot/2), le carré doit rester dans la grille 
 pivot choixPivot(int n, int lig, int col) {               // lig = i-1 de deplacement et col = numcol = n de saisiecolonne
   int i=0, j=0;
   int ligmin, ligmax, colmin, colmax;
   pivot c;
   char carlu;
-  
   printf("Votre nouveau jeton est en l%d, c%d \n", lig+1, col+1);
   ligmin = lig-n;
   ligmax = lig+n;
@@ -147,8 +138,7 @@ pivot choixPivot(int n, int lig, int col) {               // lig = i-1 de deplac
   if ((colmax + n) > 7 ) {
     colmax = 7-n;
   }
-  // la ligne affichée est à +1 de l'indice
-  while (j<(colmin+1) || (j>(colmax+1) && j!=99)){
+  while (j<(colmin+1) || (j>(colmax+1) && j!=99)){                                         // la ligne affichée est à +1 de l'indice
     printf("Choisir la colonne du pivot : comprise entre %d et %d ou 99 pour sortir du jeu\n", colmin+1, colmax+1);
     scanf("%d", &j);
     carlu = getchar();
@@ -199,7 +189,6 @@ int demanderRotation(){
   return choix;
  }
 
-// rotation horaire
 void rotationHoraire(int tab[NBLIG][NBCOL], int n, pivot p) {
   int i, j, k, k2;
   int t[5][5];                                                                                             //definir en constante
@@ -335,3 +324,12 @@ int finJeu(int tab[NBLIG][NBCOL], defJoueur resJ[3]) {
    }
   return fin;
 }
+
+int sauvJeux(jeu sjeu, FILE *fic){
+  int save = 0;
+  fic = fopen("SauvP5.txt", "wb+") ;
+  if (fic!=NULL) {
+    save = fwrite(&sjeu, sizeof(jeu), 1, fic);
+    save = fclose(fic);
+   }
+ }
