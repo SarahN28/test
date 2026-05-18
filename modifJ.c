@@ -43,6 +43,8 @@ int constructJoueur (defJoueur joueur[3]){
   return (n);
  }
 
+
+main
  f=fopen("SauvP5.txt", "rb") ;
  if(f!= NULL) {
   while(reprise != 'o' && reprise != 'O' && reprise != 'n' && reprise != 'N') {
