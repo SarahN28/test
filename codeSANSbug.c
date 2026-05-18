@@ -28,7 +28,7 @@ typedef struct {
 // saisie du nombre de joueur
 int constructJoueur (defJoueur joueur[3]){
   int n = 0;
-  int j;
+  int j, k;
   char carlu;
   do{
      printf("Entrez le nombre de joueurs : 2 ou 3, pour sortir : tapez 99 \n");
@@ -47,9 +47,17 @@ int constructJoueur (defJoueur joueur[3]){
   for(int i=0; i<n; i++) {
    joueur[i].numJoueur = i+1;
    joueur[i].aGagner = 0;
-   printf("Entrez le nom du joueur %d et tapez sur la touche Entrée \n", i+1);
    carlu = ' ';
    j=0;
+   do {
+     if (carlu=='\n'){
+       printf("erreur de saisie\n");
+     }
+     printf("Entrez le nom du joueur %d et tapez sur la touche Entrée \n", i+1);
+     scanf("%c", &carlu);
+   } while (carlu=='\n');
+   joueur[i].nomJoueur[j] = carlu;
+   j++;
    while (carlu !='\n') {
      scanf("%c", &carlu);
      if (j < 10 && carlu != '\n') {
@@ -65,7 +73,6 @@ int constructJoueur (defJoueur joueur[3]){
   }
   return (n);
  }
-
 // sélection du pivot
 int selectionpivot(){
   int piv;
