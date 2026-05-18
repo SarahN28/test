@@ -47,6 +47,7 @@ int constructJoueur (defJoueur joueur[3]){
   return (n);
  }
 
+
  // initialisation de la grille de jeu
  void createPiste(int tab[NBLIG][NBCOL], int nbl, int nbc){
   for (int i=0; i<nbl; i++){
@@ -92,3 +93,16 @@ void printGame(jeu nvjeu, int nbl, int nbc){
     printf("-\n");
    }
  }
+
+int selectionpivot(){
+  int piv;
+  piv = rand()%2;
+  if(piv==0){
+    piv = 3;
+  }
+  else{
+  piv = 5;
+  }
+printf("Le carré pivotant a une largeur de %d cases \n", piv);
+return piv;
+}
