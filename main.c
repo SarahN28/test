@@ -8,22 +8,20 @@ int main () {
   int numerocol = 0;
   int finpartie = 1;
   int retF = 0;
-  char reprise, carlu;
+  char carlu;
+  char reprise = ' ';
   pivot piv;
   jeu nvJeu;
   FILE *f = NULL;
- 
- srand(time(NULL));
-  
- // verification si sauvegarde du jeu existe
- reprise = ' ';
- f=fopen("SauvP5.txt", "rb") ;
- if(f!= NULL) {
-  while(reprise != 'o' && reprise != 'O' && reprise != 'n' && reprise != 'N') {
-    printf("Voulez vous reprendre l'ancienne partie ? O pour Oui, N pour Non \n");
-    scanf("%c", &reprise);
-    carlu = getchar();
-    while (carlu != '\n') {
+  srand(time(NULL));
+
+  f=fopen("SauvP5.txt", "rb") ;                                            // verification si sauvegarde du jeu existe
+  if(f!= NULL) {
+    while(reprise != 'o' && reprise != 'O' && reprise != 'n' && reprise != 'N') {
+      printf("Voulez vous reprendre l'ancienne partie ? O pour Oui, N pour Non \n");
+      scanf("%c", &reprise);
+      carlu = getchar();
+      while (carlu != '\n') {
       carlu = getchar();
     }
   }
