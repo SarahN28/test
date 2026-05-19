@@ -452,6 +452,9 @@ while(finpartie == 1) {                                                         
           sauvJeux(nvJeu, f);
           return 0;
         }
+        else if (reprise == 'n' || reprise == 'N'){
+          return 0;
+         }
       } while (reprise!='o' && reprise!='O' && reprise!='n' && reprise!='N' || reprise == '\n');
       carlu = getchar();
       while (carlu != '\n') {
