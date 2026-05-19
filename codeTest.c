@@ -26,22 +26,23 @@ typedef struct {
 int constructJoueur (defJoueur joueur[3]){
   int n = 0;
   int j;
-  char carlu;
+  char carlu, c1;
   do{
      printf("Veuillez choisir le mode du jeu ! \n");
-     printf("  2 : 2 joueurs | 3 : 3 joueurs | pour sortir : tapez 99 \n");
-     scanf("%d", &n);
-     carlu = getchar();                                       //verif que l'utilisateur n'a mis qu'un nombre
+     printf("  2 : 2 joueurs | 3 : 3 joueurs |  Q : pour sortir \n");
+     scanf("%c", &c1);
+     carlu = c1;
      while (carlu !='\n') {
       carlu = getchar();                                      //verif que l'utilisateur n'a mis qu'un nombre
      }
-     if (n!=2 && n!=3 && n!=99) {
+     if (c1!='2' && c1!='3' && c1!='q' && c1!='Q') {
        printf("Erreur : Le nombre de joueur est incorrect\n");                   //verif que le nombre donne est prenable
      }
-  } while (n!=2 && n!=3 && n!=99);
-  if (n==99) {
-   return (n);
-  }
+  } while (c1!='2' && c1!='3' && c1!='q' && c1!='Q');
+  if (c1=='q' || c1=='Q') {
+    return 99;
+   }
+  n = c1-'0';
   for(int i=0; i<n; i++) {
    joueur[i].numJoueur = i+1;
    joueur[i].aGagner = 0;
@@ -69,7 +70,7 @@ int constructJoueur (defJoueur joueur[3]){
    }
    joueur[i].nomJoueur[10] = '\0';
   }
-  return (n);
+  return n;
  }
 
  void createPiste(int tab[NBLIG][NBCOL], int nbl, int nbc){
