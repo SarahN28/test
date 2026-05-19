@@ -129,6 +129,28 @@ printf("Le carré pivotant a une largeur de %d cases \n", piv);
 return piv;
 }
 
+int saisiecolonne() {
+   int n=0;
+   char carlu;
+    do{
+     printf("Entrez le numéro de colonne pour insérer votre jeton, ou 99 pour sortir : \n");
+     scanf("%d", &n);
+     carlu = getchar();
+     while (carlu != '\n') {
+       carlu = getchar();
+     }
+     if (n<1 || (n>8 && n!=99)) {
+       printf("Erreur :  le numéro de colonne est incorrecte\n");
+     }
+  } while (n<1 || (n>8 && n!=99));
+  if (n!=99) {
+    return (n-1);
+  }
+  else {
+    return (n);
+  } 
+ }
+
 int deplacement_bas(int tab[NBLIG][NBCOL], int nbJ, int numcol){                          // insert piece in column 'numcol'
   int i = 0;
   while (tab[i][numcol]==0 && i<6){
