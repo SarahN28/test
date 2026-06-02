@@ -13,7 +13,7 @@ void resultPlayer(Player plgame[3], int nbplay) {
         for ( j=1 ; j<nbplay ; j++) { 
           trouv = 1 ;
           for  (k=0 ; k<10 ; k++) {   
-            if (plgame[j].namePlayer[k] !=gamelu.pl[i]. namePlayer[k]) { 
+            if (plgame[j].namePlayer[k] != gamelu.pl[i].namePlayer[k]) { 
               trouv = 0 ;
              }
            }
